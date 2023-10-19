@@ -1,0 +1,45 @@
+body {
+  margin-left: 20px;
+}
+
+header {
+  padding: 50px 30px;
+}
+
+h1 {
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  font-size: 120px;
+  margin: 0px;
+  opacity: 80%;
+}
+
+p {
+  font-family: "Courier New", Courier, monospace;
+  font-size: 24px;
+  font-weight: bold;
+  opacity: 50%;
+  margin: 0px;
+}
+
+hr {
+  margin: 50px 20px;
+}
+
+main {
+  padding: 50px 0px;
+}
+
+a {
+  font-family: "Courier New", Courier, monospace;
+  font-size: 32px;
+  font-weight: bold;
+  color: black;
+  opacity: 65%;
+  text-decoration: none;
+  margin-left: 20px;
+}
+
+a:hover {
+  text-decoration: underline;
+}
