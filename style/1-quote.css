@@ -14,11 +14,79 @@ body {
     #cacaca,
     #c2c2c2
   );
-  color: #333333;
+  color: #494949;
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
   margin: 0;
   font-family: "Prata", serif;
+  text-align: center;
+}
+
+div.quote-container {
+  width: auto;
+  max-width: 800px;
+  padding: 25px 35px;
+  border-radius: 8px;
+  border-right: 1px solid white;
+  border-top: 1px solid white;
+  background-color: rgba(255, 255, 255, 0.6);
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
+    rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+}
+
+.quote-text {
+  font-size: 2.75rem;
+}
+
+.long-quote {
+  font-size: 2rem;
+}
+
+.fa-solid {
+  font-size: 3.2rem;
+  opacity: 10%;
+  position: relative;
+  top: -10px;
+}
+
+.quote-author {
+  font-size: 1.5rem;
+  padding-top: 0.5rem;
+  font-style: italic;
+}
+
+.button-container {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+button {
+  font-size: 1.2rem;
+  padding: 8px 15px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  background-color: transparent;
+  color: #c2c2c2;
+  transition: 0.5s all ease-in;
+  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 1.2px;
+}
+
+button:hover {
+  background-color: #e7e7e7;
+  color: white;
+  box-shadow: none;
+}
+
+@media (max-width: 1000px) {
+  div.quote-container {
+    margin: 10px auto;
+  }
+
+  .quote-text {
+    font-size: 2.5rem;
+  }
 }
