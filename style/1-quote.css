@@ -34,6 +34,7 @@ div.quote-container {
   background-color: rgba(255, 255, 255, 0.6);
   box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
     rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+  line-height: 1;
 }
 
 .quote-text {
@@ -45,15 +46,15 @@ div.quote-container {
 }
 
 .fa-solid {
-  font-size: 3.2rem;
+  font-size: 2rem;
   opacity: 10%;
   position: relative;
-  top: -10px;
+  top: -5px;
 }
 
 .quote-author {
   font-size: 1.5rem;
-  padding-top: 0.5rem;
+  padding-top: 1.5rem;
   font-style: italic;
 }
 
