@@ -11,6 +11,43 @@ body {
   align-items: center;
   background: url("/media/robot.gif");
   background-size: contain;
-  background-position: left center;
+  background-position: 40% 50%;
   background-repeat: no-repeat;
+}
+
+button {
+  font-family: "Courier New", Courier, monospace;
+  font-size: 20px;
+  font-weight: bold;
+  padding: 15px 25px;
+  /* background-color: #293142; */
+  background-color: #e5e5e5;
+  color: #293142;
+  outline: none;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+  position: relative;
+  top: -220px;
+}
+
+button:hover {
+  background-color: #d9d9d9;
+}
+
+button:active {
+  transform: scale(0.98);
+  box-shadow: none;
+}
+
+button:disabled {
+  cursor: default;
+  filter: brightness(30%);
+}
+
+@media (max-width: 576px) {
+  button {
+    top: -180px;
+  }
 }
