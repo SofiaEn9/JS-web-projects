@@ -43,7 +43,7 @@ button:active {
 
 button:disabled {
   cursor: default;
-  filter: brightness(30%);
+  filter: brightness(70%);
 }
 
 @media (max-width: 576px) {

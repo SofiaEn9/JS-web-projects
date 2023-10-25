@@ -1,8 +1,15 @@
-const button = document.getElementById("button");
+// Resources
+// https://www.voicerss.org/api/
+// https://sv443.net/jokeapi/v2/
+
+const button = document.getElementById("btn");
 const audioElement = document.getElementById("audio");
 
+function toggleButton() {
+  button.disabled = !button.disabled;
+}
+
 function tellMeJoke(joke) {
-  console.log("tell me:", joke);
   VoiceRSS.speech({
     key: "c21d1dc1df9344a3b49c36a5f6a3a47a",
     src: joke,
@@ -16,7 +23,7 @@ function tellMeJoke(joke) {
 }
 
 async function getJoke() {
-  // let joke = '';
+  let joke = "";
   const apiUrl =
     "https://v2.jokeapi.dev/joke/Programming?blacklistFlags=nsfw,religious,political,racist,sexist,explicit";
   try {
@@ -28,9 +35,11 @@ async function getJoke() {
       joke = data.joke;
     }
     tellMeJoke(joke);
+    toggleButton();
   } catch (error) {
     console.log("something went wrong", error);
   }
 }
 
-getJoke();
+button.addEventListener("click", getJoke);
+audioElement.addEventListener("ended", toggleButton);
