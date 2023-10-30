@@ -17,9 +17,78 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
+/* --- Overlay ------------------------------ */
+.overlay {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9;
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
 /* --- Navigation Menu ------------------------------ */
+nav ul {
+  height: 100vh;
+  margin: 0px;
+  padding: 0px;
+}
 
 /* --- Menu Bars ------------------------------------ */
+nav li:nth-child(1) {
+  background-color: var(--navColor1);
+}
+
+nav li:nth-child(2) {
+  background-color: var(--navColor2);
+}
+
+nav li:nth-child(3) {
+  background-color: var(--navColor3);
+}
+
+nav li:nth-child(4) {
+  background-color: var(--navColor4);
+}
+
+nav li:nth-child(5) {
+  background-color: var(--navColor5);
+}
+
+nav li {
+  height: 20%;
+  overflow: hidden;
+}
+
+nav li a {
+  position: relative;
+  top: 45%;
+  display: block;
+  text-align: center;
+  text-decoration: none;
+  letter-spacing: 3px;
+  color: #d6d6d6;
+}
+
+nav li a:hover {
+  transform: scale(1.15);
+}
+
+nav li a::before {
+  content: "";
+  width: 25vw;
+  height: 3px;
+  background-color: #d6d6d6;
+  position: absolute;
+  top: 47.5%;
+  left: 0;
+  opacity: 0;
+}
+
+nav li a:hover::before {
+  opacity: 1;
+}
 
 .menu-bars {
   position: fixed;
