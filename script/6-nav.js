@@ -5,21 +5,37 @@ const nav2 = document.getElementById("nav-2");
 const nav3 = document.getElementById("nav-3");
 const nav4 = document.getElementById("nav-4");
 const nav5 = document.getElementById("nav-5");
+const navItems = [nav1, nav2, nav3, nav4, nav5];
+
+// Control Navigation animation
+function navAnimation(direction1, direction2) {
+  navItems.forEach((nav, i) => {
+    nav.classList.replace(
+      `slide-${direction1}-${i + 1}`,
+      `slide-${direction2}-${i + 1}`
+    );
+  });
+}
 
 function toggleNavBar() {
+  // Toggle: Hamburger Menu animantion
   menuBars.classList.toggle("change");
+  // Toggle Menu active
   overlay.classList.toggle("overlay-active");
-  overlay.classList.remove("overlay-slide-right", "overlay-slide-left");
   if (overlay.classList.contains("overlay-active")) {
-    overlay.classList.add("overlay-slide-right");
+    // Animate In-Overlay
+    overlay.classList.replace("overlay-slide-left", "overlay-slide-right");
+    // Animate In - Nav Items
+    navAnimation("out", "in");
   } else {
-    overlay.classList.add("overlay-slide-left");
+    // Animate Out-Overlay
+    overlay.classList.replace("overlay-slide-right", "overlay-slide-left");
+    // Animate Out - Nav Items
+    navAnimation("in", "out");
   }
 }
 
 menuBars.addEventListener("click", toggleNavBar);
-nav1.addEventListener("click", toggleNavBar);
-nav2.addEventListener("click", toggleNavBar);
-nav3.addEventListener("click", toggleNavBar);
-nav4.addEventListener("click", toggleNavBar);
-nav4.addEventListener("click", toggleNavBar);
+navItems.forEach((nav) => {
+  nav.addEventListener("click", toggleNavBar);
+});
