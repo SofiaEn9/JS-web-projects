@@ -83,3 +83,16 @@ button {
 #delete:hover {
   background-color: #d42a3b;
 }
+
+@media (max-width: 576px) {
+  .container {
+    max-width: 375px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  button {
+    font-size: 12px;
+  }
+}
