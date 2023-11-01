@@ -9,6 +9,10 @@
       href="https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap"
       rel="stylesheet"
     />
+    <script
+      src="https://kit.fontawesome.com/2861282718.js"
+      crossorigin="anonymous"
+    ></script>
     <link rel="stylesheet" href="style/7-music-player.css" />
     <title>🎶 Music Player</title>
   </head>
@@ -18,9 +22,23 @@
         <img src="media/7-Autumn.jpg" alt="Autumn forest" />
       </div>
       <div class="info-container">
-        <h1>Title</h1>
-        <h3>author</h3>
-        <audio src="media/7-Autumn.mp3" controls></audio>
+        <h1>The Four Seasons - Autumn</h1>
+        <h3>Antonio Vivaldi</h3>
+        <audio src="media/7-Autumn.mp3"></audio>
+      </div>
+      <!-- Progress Bar  -->
+      <div class="progress-container" id="progress-container">
+        <div class="progress" id="progress"></div>
+        <div class="duration-container">
+          <span id="current-time">0:20</span>
+          <span id="duration">5:00</span>
+        </div>
+      </div>
+      <!-- Player Controls -->
+      <div class="player-controls">
+        <i class="fa-solid fa-backward-step" id="prev" title="Previous"></i>
+        <i class="fa-solid fa-play main-btn" id="play" title="Play"></i>
+        <i class="fa-solid fa-forward-step" id="forward" title="Forward"></i>
       </div>
     </div>
   </body>
