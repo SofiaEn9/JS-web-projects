@@ -1,6 +1,7 @@
 /* font-family: 'Noto Sans', sans-serif; */
 
 body {
+  height: 100vh;
   margin: 0px;
   background-color: #e0e0e0;
   font-family: "Noto Sans", sans-serif;
@@ -12,9 +13,8 @@ body {
 
 .container {
   background-color: #f5f5f5;
-  width: 300px;
-  height: 325px;
-  margin-top: 75px;
+  width: 350px;
+  height: 350px;
   border-radius: 8px;
   box-shadow: rgba(0, 0, 0, 0.3) 0px 4px 12px;
 }
@@ -24,7 +24,7 @@ body {
   height: 200px;
   position: relative;
   top: -25px;
-  left: 25px;
+  left: 50px;
 }
 
 .img-container img {
@@ -40,6 +40,7 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  margin-top: 10px;
 }
 
 h1,
@@ -57,9 +58,9 @@ h3 {
   background: #e0e0e0;
   border-radius: 5px;
   cursor: pointer;
-  margin: 40px 20px;
+  margin: 40px 35px;
   height: 4px;
-  width: 90%;
+  width: 80%;
   position: relative;
   top: -20px;
 }
@@ -74,8 +75,6 @@ h3 {
 }
 
 .duration-container {
-  /* position: relative;
-  top: -25px; */
   display: flex;
   justify-content: space-between;
   font-size: 12px;
@@ -86,7 +85,7 @@ h3 {
 .player-controls {
   position: relative;
   top: -50px;
-  left: 100px;
+  left: 120px;
   width: 150px;
 }
 
