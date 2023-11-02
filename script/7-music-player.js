@@ -1,6 +1,8 @@
 let title = document.querySelector("#songTitle");
 let artist = document.querySelector("#artist");
 let image = document.querySelector("img");
+let progressBar = document.querySelector("#progress");
+const progressContainer = document.querySelector("#progressContainer");
 
 const music = document.querySelector("audio");
 const prevBtn = document.getElementById("prev");
@@ -80,6 +82,15 @@ function prevSong() {
   playSong();
 }
 
+function updateProgressBar(event) {
+  if (isPlaying) {
+    const { duration, currentTime } = event.srcElement;
+    const progressPercent = (currentTime / duration) * 100;
+    progressBar.style.width = `${progressPercent}%`;
+  }
+}
+
 playBtn.addEventListener("click", () => (isPlaying ? pauseSong() : playSong()));
 fwdBtn.addEventListener("click", forwardSong);
 prevBtn.addEventListener("click", prevSong);
+music.addEventListener("timeupdate", updateProgressBar);
