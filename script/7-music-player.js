@@ -2,7 +2,7 @@ let title = document.querySelector("#songTitle");
 let artist = document.querySelector("#artist");
 let image = document.querySelector("img");
 let progressBar = document.querySelector("#progress");
-const progressContainer = document.querySelector("#progressContainer");
+const progressContainer = document.querySelector("#progress-container");
 const durationElement = document.getElementById("duration");
 const currentTimeElement = document.getElementById("current-time");
 const music = document.querySelector("audio");
@@ -108,7 +108,16 @@ function updateProgressBar(event) {
   }
 }
 
+function setProgressBar(event) {
+  const width = this.clientWidth;
+  const clickX = event.offsetX;
+  const { duration } = music;
+  music.currentTime = (clickX / width) * duration;
+}
+
 playBtn.addEventListener("click", () => (isPlaying ? pauseSong() : playSong()));
 fwdBtn.addEventListener("click", forwardSong);
 prevBtn.addEventListener("click", prevSong);
 music.addEventListener("timeupdate", updateProgressBar);
+music.addEventListener("ended", forwardSong);
+progressContainer.addEventListener("click", setProgressBar);
