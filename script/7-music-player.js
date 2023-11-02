@@ -3,7 +3,8 @@ let artist = document.querySelector("#artist");
 let image = document.querySelector("img");
 let progressBar = document.querySelector("#progress");
 const progressContainer = document.querySelector("#progressContainer");
-
+const durationElement = document.getElementById("duration");
+const currentTimeElement = document.getElementById("current-time");
 const music = document.querySelector("audio");
 const prevBtn = document.getElementById("prev");
 const playBtn = document.getElementById("play");
@@ -87,6 +88,23 @@ function updateProgressBar(event) {
     const { duration, currentTime } = event.srcElement;
     const progressPercent = (currentTime / duration) * 100;
     progressBar.style.width = `${progressPercent}%`;
+    // Display song duration
+    const durationMinutes = Math.floor(duration / 60);
+    let durationSeconds = Math.floor(duration % 60);
+    if (durationSeconds < 10) {
+      durationSeconds = `0${durationSeconds}`;
+    }
+    // Delay switching the duration element to avoid displaying NaN
+    if (durationSeconds) {
+      durationElement.textContent = `${durationMinutes}:${durationSeconds}`;
+    }
+    // Display song current time
+    const currentMinutes = Math.floor(currentTime / 60);
+    let currentSeconds = Math.floor(currentTime % 60);
+    if (currentSeconds < 10) {
+      currentSeconds = `0${currentSeconds}`;
+    }
+    currentTimeElement.textContent = `${currentMinutes}:${currentSeconds}`;
   }
 }
 
