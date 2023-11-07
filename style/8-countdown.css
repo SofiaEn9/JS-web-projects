@@ -91,7 +91,7 @@ input[type="date"] {
 }
 
 /* Button */
-input[type="submit"] {
+button {
   width: 100%;
   height: 40px;
   border-radius: 20px;
@@ -104,7 +104,7 @@ input[type="submit"] {
   outline: none;
 }
 
-input[type="submit"]:hover {
+button:hover {
   filter: brightness(110%);
 }
 
@@ -114,6 +114,7 @@ ul {
 }
 
 li {
+  display: inline-block;
   font-size: 30px;
   list-style-type: none;
   padding: 10px;
@@ -130,6 +131,29 @@ li span {
 .complete {
   position: relative;
   top: 60px;
+}
+
+.complete-tile {
+  animation: complete 4s infinite;
+}
+
+@keyframes complete {
+  0% {
+    color: #006959;
+  }
+  25% {
+    color: #328877;
+  }
+  50% {
+    color: #6592c3;
+    transform: scale(1.5);
+  }
+  75% {
+    color: #a184b5;
+  }
+  100% {
+    color: #6d5280;
+  }
 }
 
 /* Media Query: Large Smartphone (Vertical) */
