@@ -9,6 +9,7 @@ const countdownBtn = document.getElementById("submit-btn");
 let countdownTitle = "";
 let countdownDate = "";
 let countdownValue = Date;
+let countdownActive;
 
 const sec = 1000;
 const min = sec * 60;
@@ -20,24 +21,26 @@ const today = new Date().toISOString().split("T")[0];
 datePicker.setAttribute("min", today);
 
 function updateDOM() {
-  const now = new Date().getTime();
-  const distance = countdownValue - now;
-  console.log("distance:", distance);
-  const days = Math.floor(distance / day);
-  const hrs = Math.floor((distance % day) / hr);
-  const mins = Math.floor((distance % hr) / min);
-  const secs = Math.floor((distance % min) / sec);
-  console.log(days, hrs, mins, secs);
-  // Hide Input Container
-  inputContainer.hidden = true;
-  // Show Countdown Container
-  countdownContainer.hidden = false;
-  // Populate Countdown
-  countdownElementTitle.textContent = `${countdownTitle}`;
-  timeElements[0].textContent = `${days}`;
-  timeElements[1].textContent = `${hrs}`;
-  timeElements[2].textContent = `${mins}`;
-  timeElements[3].textContent = `${secs}`;
+  countdownActive = setInterval(() => {
+    const now = new Date().getTime();
+    const distance = countdownValue - now;
+    console.log("distance:", distance);
+    const days = Math.floor(distance / day);
+    const hrs = Math.floor((distance % day) / hr);
+    const mins = Math.floor((distance % hr) / min);
+    const secs = Math.floor((distance % min) / sec);
+    console.log(days, hrs, mins, secs);
+    // Hide Input Container
+    inputContainer.hidden = true;
+    // Show Countdown Container
+    countdownContainer.hidden = false;
+    // Populate Countdown
+    countdownElementTitle.textContent = `${countdownTitle}`;
+    timeElements[0].textContent = `${days}`;
+    timeElements[1].textContent = `${hrs}`;
+    timeElements[2].textContent = `${mins}`;
+    timeElements[3].textContent = `${secs}`;
+  }, sec);
 }
 
 function updateCountdown(event) {
@@ -55,4 +58,16 @@ function updateCountdown(event) {
   }
 }
 
+function resetCoutdown() {
+  // Show Input Container / Hide Countdown
+  countdownContainer.hidden = true;
+  inputContainer.hidden = false;
+  // Stop Countdown
+  clearInterval(countdownActive);
+  // Reset Countdown values
+  countdownTitle = "";
+  countdownDate = "";
+}
+
 countdownForm.addEventListener("submit", updateCountdown);
+countdownBtn.addEventListener("click", resetCoutdown);
