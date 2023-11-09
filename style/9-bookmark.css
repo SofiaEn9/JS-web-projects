@@ -36,6 +36,7 @@ h1 {
   border-radius: var(--radius);
   user-select: none;
   color: whitesmoke;
+  font-weight: 500;
 }
 
 h1:hover {
@@ -47,8 +48,8 @@ h1:hover {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  /* max-width: 90vw;
-  margin: 0 auto; */
+  max-width: 90vw;
+  margin: 0 auto;
 }
 
 .item {
@@ -116,7 +117,7 @@ a:active {
   animation: modalopen 1s;
 }
 
-@keyframes {
+@keyframes modalopen {
   from {
     opacity: 0;
   }
