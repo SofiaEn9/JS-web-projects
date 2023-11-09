@@ -1,4 +1,8 @@
-@import url("https://fonts.googleapis.com/css2?family=Fira+Sans:wght@300&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Fira+Sans:wght@300;400;500&display=swap");
+
+:root {
+  --radius: 5px;
+}
 
 body {
   background-image: radial-gradient(
@@ -29,7 +33,7 @@ h1 {
   margin: 0 auto;
   margin-top: 50px;
   margin-bottom: 50px;
-  border-radius: 5px;
+  border-radius: var(--radius);
   user-select: none;
   color: whitesmoke;
 }
@@ -52,7 +56,7 @@ h1:hover {
   padding: 10px 10px 20px 20px;
   margin: 10px;
   text-align: center;
-  border-radius: 5px;
+  border-radius: var(--radius);
   user-select: none;
   color: whitesmoke;
 }
@@ -85,6 +89,95 @@ a:active {
 }
 
 .fa-minus:hover {
+  cursor: pointer;
+}
+
+.modal-container {
+  background-color: rgba(0, 0, 0, 0.6);
+  display: none;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+.show-modal {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal {
+  background-color: whitesmoke;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
+  max-width: 95%; /* for mobile devices  */
+  width: 500px; /* for desktop  */
+  animation: modalopen 1s;
+}
+
+@keyframes {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.fa-xmark {
+  float: right;
+  /* color: whitesmoke; */
+  font-size: 20px;
+  position: relative;
+  top: 12px;
+  right: 12px;
+  cursor: pointer;
+}
+
+.modal-header {
+  background-color: rgba(0, 0, 0, 0.2);
+  height: 60px;
+}
+
+h3 {
+  margin: 0;
+  padding: 20px;
+  font-weight: 500;
+}
+
+.modal-content {
+  padding: 20px;
+}
+
+.form-input {
+  width: 97%;
+  border-radius: var(--radius);
+  display: block;
+  padding: 5px;
+  outline: none;
+  border: 2px solid #c4c4c4;
+}
+
+.form-label {
+  display: block;
+  margin-top: 10px;
+  font-weight: 400;
+}
+
+.submit-btn {
+  background-color: #c4c4c4;
+  border: none;
+  border-radius: var(--radius);
+  display: block;
+  margin: 0 auto;
+  margin-top: 20px;
+  padding: 8px 30px;
+  font-size: 14px;
+}
+
+.submit-btn:hover {
+  background-color: rgba(0, 0, 0, 0.3);
   cursor: pointer;
 }
 
