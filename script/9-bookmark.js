@@ -6,9 +6,25 @@ const websiteNameElement = document.getElementById("website-name");
 const websiteURLElement = document.getElementById("website-url");
 const bookmarkContainer = document.getElementById("bookmark-container");
 
+let bookmarks = [];
+
 function showModalWindow() {
   modal.classList.add("show-modal");
   websiteNameElement.focus();
+}
+
+function fetchBookmarks() {
+  if (localStorage.getItem("bookmarks")) {
+    bookmarks = JSON.parse(localStorage.getItem("bookmarks"));
+  } else {
+    bookmarks = [
+      {
+        name: "Sofia Enriquez portfolio",
+        url: "sofia-enriquez.com",
+      },
+    ];
+    localStorage.setItem("bookmarks", JSON.stringify(bookmarks));
+  }
 }
 
 function validate(nameValue, urlValue) {
@@ -36,6 +52,15 @@ function storeBookmark(event) {
   if (!validate(nameValue, urlValue)) {
     return false;
   }
+  const bookmark = {
+    name: nameValue,
+    url: urlValue,
+  };
+  bookmarks.push(bookmark);
+  localStorage.setItem("bookmarks", JSON.stringify(bookmarks));
+  fetchBookmarks();
+  bookmarkForm.reset();
+  websiteNameElement.focus();
 }
 
 showModal.addEventListener("click", showModalWindow);
@@ -46,3 +71,6 @@ window.addEventListener("click", (event) =>
   event.target === modal ? modal.classList.remove("show-modal") : false
 );
 bookmarkForm.addEventListener("submit", storeBookmark);
+
+// On load
+fetchBookmarks();
