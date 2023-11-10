@@ -11,6 +11,33 @@ function showModalWindow() {
   websiteNameElement.focus();
 }
 
+function validate(nameValue, urlValue) {
+  const expression =
+    /[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)?/gi;
+  const regex = new RegExp(expression);
+  if (!nameValue || !urlValue) {
+    alert("Please submit value for both fields.");
+    return false;
+  }
+  if (!urlValue.match(regex)) {
+    alert("Please provide a valid web address.");
+    return false;
+  }
+  return true;
+}
+
+function storeBookmark(event) {
+  event.preventDefault();
+  const nameValue = websiteNameElement.value;
+  let urlValue = websiteURLElement.value;
+  if (!urlValue.includes("http://") && !urlValue.includes("https://")) {
+    urlValue = `https://${urlValue}`;
+  }
+  if (!validate(nameValue, urlValue)) {
+    return false;
+  }
+}
+
 showModal.addEventListener("click", showModalWindow);
 closeModal.addEventListener("click", () =>
   modal.classList.remove("show-modal")
@@ -18,3 +45,4 @@ closeModal.addEventListener("click", () =>
 window.addEventListener("click", (event) =>
   event.target === modal ? modal.classList.remove("show-modal") : false
 );
+bookmarkForm.addEventListener("submit", storeBookmark);
