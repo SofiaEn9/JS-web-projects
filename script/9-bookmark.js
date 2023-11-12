@@ -4,64 +4,29 @@ const closeModal = document.getElementById("close-icon");
 const bookmarkForm = document.getElementById("bookmark-form");
 const websiteNameElement = document.getElementById("website-name");
 const websiteURLElement = document.getElementById("website-url");
-const bookmarkContainer = document.getElementById("bookmark-container");
+const bookmarksContainer = document.getElementById("bookmark-container");
 
 let bookmarks = [];
 
+// Show Modal, Focus on Input
 function showModalWindow() {
   modal.classList.add("show-modal");
   websiteNameElement.focus();
 }
 
-function buildBookmarks() {
-  const { name, url } = bookmarks;
-  // Create item
-  const item = document.createElement("div");
-  item.classList.add("item");
-  // Create close icon
-  const closeIcon = document.createElement("i");
-  closeIcon.classList.add("fa-solid", "fa-minus");
-  closeIcon.setAttribute("title", "Delete Bookmark");
-  closeIcon.setAttribute("onclick", `deleteBookmark('${url}')`);
-  // Favicon & link container
-  const linkInfo = document.createElement("div");
-  linkInfo.classList.add("name");
-  // Create Favicon
-  const favicon = document.createElement("img");
-  favicon.setAttribute(
-    "src",
-    `https://s2.googleusercontent.com/s2/favicons?domain=${url}`
-  );
-  favicon.setAttribute("alt", "Favicon");
-  // Create link
-  const link = document.createElement("a");
-  favicon.setAttribute("href", `${url}`);
-  link.setAttribute("target", "_blank");
-  link.textContent = name;
-  // Append to bookmarks container
-  linkInfo.append(favicon, link);
-  item.append(closeIcon, linkInfo);
-  bookmarkContainer.append(item);
-}
+// Modal event listeners
+showModal.addEventListener("click", showModalWindow);
+closeModal.addEventListener("click", () =>
+  modal.classList.remove("show-modal")
+);
+window.addEventListener("click", (event) =>
+  event.target === modal ? modal.classList.remove("show-modal") : false
+);
 
-function fetchBookmarks() {
-  if (localStorage.getItem("bookmarks")) {
-    bookmarks = JSON.parse(localStorage.getItem("bookmarks"));
-  } else {
-    bookmarks = [
-      {
-        name: "Sofia Enriquez portfolio",
-        url: "sofia-enriquez.com",
-      },
-    ];
-    localStorage.setItem("bookmarks", JSON.stringify(bookmarks));
-  }
-  buildBookmarks();
-}
-
+// Validate form input
 function validate(nameValue, urlValue) {
   const expression =
-    /[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)?/gi;
+    /(https)?:\/\/(www\.)?[-a-zA-Z0-9@:%._+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_+.~#?&//=]*)/g;
   const regex = new RegExp(expression);
   if (!nameValue || !urlValue) {
     alert("Please submit value for both fields.");
@@ -74,6 +39,71 @@ function validate(nameValue, urlValue) {
   return true;
 }
 
+function buildBookmarks() {
+  // Remove all bookmark elements
+  bookmarksContainer.textContent = "";
+  // Build items
+  bookmarks.forEach((bookmark) => {
+    const { name, url } = bookmark;
+    // Create item
+    const item = document.createElement("div");
+    item.classList.add("item");
+    // Create close icon
+    const closeIcon = document.createElement("i");
+    closeIcon.classList.add("fa-solid", "fa-minus");
+    closeIcon.setAttribute("title", "Delete Bookmark");
+    closeIcon.setAttribute("onclick", `deleteBookmark('${url}')`);
+    // Favicon & link container
+    const linkInfo = document.createElement("div");
+    linkInfo.classList.add("name");
+    // Create Favicon
+    const favicon = document.createElement("img");
+    favicon.setAttribute(
+      "src",
+      `https://s2.googleusercontent.com/s2/favicons?domain=${url}`
+    );
+    favicon.setAttribute("alt", "Favicon");
+    // Create link
+    const link = document.createElement("a");
+    link.setAttribute("href", `${url}`);
+    link.setAttribute("target", "_blank");
+    link.textContent = name;
+    // Append to bookmarks container
+    linkInfo.append(favicon, link);
+    item.append(closeIcon, linkInfo);
+    bookmarksContainer.append(item);
+  });
+}
+
+// Fetch bookmarks
+function fetchBookmarks() {
+  // Get bookmarks from localStorage if available
+  if (localStorage.getItem("bookmarks")) {
+    bookmarks = JSON.parse(localStorage.getItem("bookmarks"));
+  } else {
+    // Create bookmarks array in localStorage
+    bookmarks = [
+      {
+        name: "Google",
+        url: "https://google.com",
+      },
+    ];
+    localStorage.setItem("bookmarks", JSON.stringify(bookmarks));
+  }
+  buildBookmarks();
+}
+
+function deleteBookmark(url) {
+  bookmarks.forEach((bookmark, i) => {
+    if (bookmark.url === url) {
+      bookmarks.splice(i, 1);
+    }
+  });
+  localStorage.setItem("bookmarks", JSON.stringify(bookmarks));
+  fetchBookmarks();
+}
+
+// Handle data from form
 function storeBookmark(event) {
   event.preventDefault();
   const nameValue = websiteNameElement.value;
@@ -95,13 +125,7 @@ function storeBookmark(event) {
   websiteNameElement.focus();
 }
 
-showModal.addEventListener("click", showModalWindow);
-closeModal.addEventListener("click", () =>
-  modal.classList.remove("show-modal")
-);
-window.addEventListener("click", (event) =>
-  event.target === modal ? modal.classList.remove("show-modal") : false
-);
+// Bookmark form event listener
 bookmarkForm.addEventListener("submit", storeBookmark);
 
 // On load
