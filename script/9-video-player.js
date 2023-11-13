@@ -7,6 +7,7 @@ const volumeRange = document.querySelector(".volume-range");
 const volumeBar = document.querySelector(".volume-bar");
 const currentTime = document.querySelector(".time-elapsed");
 const duration = document.querySelector(".time-duration");
+const speed = document.querySelector(".player-speed");
 const fullscreenBtn = document.querySelector("fullscreen");
 
 let lastVolume = 1;
@@ -86,6 +87,11 @@ function toggleMute() {
   }
 }
 
+// Playback Speed
+function changeSpeed() {
+  video.playbackRate = speed.value;
+}
+
 playBtn.addEventListener("click", togglePlay);
 video.addEventListener("click", togglePlay);
 video.addEventListener("ended", showPlayIcon);
@@ -94,3 +100,4 @@ video.addEventListener("timeupdate", updateProgress);
 progressRange.addEventListener("click", setProgress);
 volumeRange.addEventListener("click", changeVolume);
 volumeIcon.addEventListener("click", toggleMute);
+speed.addEventListener("change", changeSpeed);
