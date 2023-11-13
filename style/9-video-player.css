@@ -31,9 +31,10 @@ body {
   font-family: Helvetica, sans-serif;
 }
 
-.fas {
+.fa-solid {
   color: var(--font-color);
-  font-size: 35px;
+  font-size: 24px;
+  margin-left: 20px;
 }
 
 .player {
@@ -153,8 +154,8 @@ video {
   background: rgba(70, 70, 70, 0.5);
   border-radius: 10px;
   position: relative;
-  top: -21px;
-  left: 50px;
+  top: 7px;
+  left: 30px;
   cursor: pointer;
 }
 
