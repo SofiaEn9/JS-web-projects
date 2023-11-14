@@ -99,3 +99,7 @@ h3 {
   color: #414141;
   text-align: center;
 }
+
+small {
+  opacity: 0.3;
+}
