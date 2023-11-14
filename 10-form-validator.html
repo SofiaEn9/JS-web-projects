@@ -12,19 +12,47 @@
       <form id="form">
         <div class="form-group">
           <label for="name">Full Name</label>
-          <input type="text" id="name" placeholder="John Doe" />
+          <input
+            type="text"
+            id="name"
+            placeholder="John Doe"
+            autocomplete="off"
+            required
+            minlength="3"
+            maxlength="75"
+          />
         </div>
         <div class="form-group">
           <label for="phone">Phone Number</label>
-          <input type="tel" id="phone" placeholder="555-555-5555" />
+          <input
+            type="tel"
+            id="phone"
+            placeholder="555-555-5555"
+            autocomplete="off"
+            required
+            pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
+            title="Please include a dash between each series of numbers"
+          />
         </div>
         <div class="form-group">
           <label for="email">Email Address</label>
-          <input type="email" id="email" placeholder="email@address.com" />
+          <input
+            type="email"
+            id="email"
+            placeholder="email@address.com"
+            autocomplete="off"
+            required
+          />
         </div>
         <div class="form-group">
           <label for="url">Website URL</label>
-          <input type="url" id="url" placeholder="http://website.com" />
+          <input
+            type="url"
+            id="url"
+            placeholder="http://website.com"
+            autocomplete="off"
+            required
+          />
         </div>
         <div class="form-group">
           <label for="password1">Password</label>
@@ -32,6 +60,10 @@
             type="password"
             id="password1"
             placeholder="Must have at least 8 characters"
+            autocomplete="off"
+            required
+            pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$"
+            title="Please include at least 1 uppercase character, 1 lowercase character and 1 number"
           />
         </div>
         <div class="form-group">
@@ -40,6 +72,9 @@
             type="password"
             id="password2"
             placeholder="Password must match"
+            autocomplete="off"
+            required
+            pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$"
           />
         </div>
         <button type="submit" id="submitBtn">Register</button>

@@ -58,6 +58,15 @@ input {
   border-radius: 5px;
   border: 1px solid #c2c2c2;
   box-sizing: border-box;
+  transition: all 0.3s;
+}
+
+input:valid {
+  border: 1px solid rgb(13, 174, 13);
+}
+
+input:invalid {
+  border: 1px solid rgb(185, 27, 27);
 }
 
 button {
