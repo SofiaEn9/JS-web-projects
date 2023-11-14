@@ -33,7 +33,12 @@ function togglePlay() {
 function updateProgress() {
   progressBar.style.width = `${(video.currentTime / video.duration) * 100}%`;
   currentTime.textContent = `${displayTime(video.currentTime)} /`;
-  duration.textContent = `${video.duration.toFixed(2)}`;
+  // duration.textContent = `${video.duration.toFixed(2)}`;
+  if (video.duration < 60) {
+    duration.textContent = `00:${Math.floor(video.duration)}`;
+  } else {
+    duration.textContent = `${video.duration}`;
+  }
 }
 
 function displayTime(time) {
