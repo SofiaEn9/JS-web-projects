@@ -15,6 +15,7 @@
           <input
             type="text"
             id="name"
+            name="name"
             placeholder="John Doe"
             autocomplete="off"
             required
@@ -27,6 +28,7 @@
           <input
             type="tel"
             id="phone"
+            name="phone"
             placeholder="555-555-5555"
             autocomplete="off"
             required
@@ -39,6 +41,7 @@
           <input
             type="email"
             id="email"
+            name="email"
             placeholder="email@address.com"
             autocomplete="off"
             required
@@ -49,6 +52,7 @@
           <input
             type="url"
             id="url"
+            name="website"
             placeholder="http://website.com"
             autocomplete="off"
             required
@@ -71,6 +75,7 @@
           <input
             type="password"
             id="password2"
+            name="password"
             placeholder="Password must match"
             autocomplete="off"
             required
@@ -80,8 +85,9 @@
         <button type="submit" id="submitBtn">Register</button>
       </form>
       <div class="message-container">
-        <h3>Join us today!</h3>
+        <h3 id="message">Join us today!</h3>
       </div>
     </div>
+    <script src="script/10-form-validator.js"></script>
   </body>
 </html>

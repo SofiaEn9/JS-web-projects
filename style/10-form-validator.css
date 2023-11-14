@@ -62,11 +62,11 @@ input {
 }
 
 input:valid {
-  border: 1px solid rgb(13, 174, 13);
+  border: 1px solid #189e49;
 }
 
 input:invalid {
-  border: 1px solid rgb(185, 27, 27);
+  border: 1px solid #c61529;
 }
 
 button {
