@@ -79,5 +79,21 @@ function holdPlayerScore() {
   }
 }
 
+function newGame() {
+  isPlaying = true;
+  document
+    .querySelector(`.player--${activePlayer}`)
+    .classList.remove("player--winner");
+  document
+    .querySelector(`.player--${activePlayer}`)
+    .classList.add("player--active");
+  diceElement.classList.add("hidden");
+  score0Element.textContent = "0";
+  score1Element.textContent = "0";
+  currentScore0Element.textContent = "0";
+  currentScore1Element.textContent = "0";
+}
+
 rollDiceBtn.addEventListener("click", rollDice);
 holdScoreBtn.addEventListener("click", holdPlayerScore);
+newGameBtn.addEventListener("click", newGame);
