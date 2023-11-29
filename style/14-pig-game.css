@@ -169,3 +169,64 @@ main {
   font-weight: 700;
   color: #c7365f;
 }
+
+@media (max-width: 560px) {
+  main {
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    height: 100%;
+  }
+  section {
+    height: 35%;
+  }
+
+  .player {
+    padding: 5rem;
+  }
+
+  .name {
+    font-size: 2rem;
+  }
+
+  .current {
+    width: 100%;
+    display: flex;
+    align-items: center;
+  }
+
+  .current-label {
+    margin-bottom: 0;
+  }
+  .current-score {
+    margin-left: 1rem;
+    font-size: 2rem;
+  }
+
+  .btn {
+    position: relative;
+    display: flex;
+    align-items: center;
+    align-content: center;
+    width: 100%;
+    border-radius: 0rem;
+  }
+
+  .btn--new {
+    top: 0rem;
+  }
+  .btn--roll {
+    top: 0rem;
+  }
+  .btn--hold {
+    top: 0rem;
+  }
+
+  .dice {
+    position: absolute;
+    left: 50px;
+    top: 45vh;
+    transform: translateX(-50%);
+    height: 7rem;
+  }
+}
