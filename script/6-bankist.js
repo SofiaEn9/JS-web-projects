@@ -9,10 +9,11 @@ const btnCloseModal = document.querySelector(".btn--close-modal");
 const btnsOpenModal = document.querySelectorAll(".btn--show-modal");
 const btnScrollTo = document.querySelector(".btn--scroll-to");
 const section1 = document.querySelector("#section--1");
-const navBar = document.querySelector(".nav__links");
+const navLinks = document.querySelector(".nav__links");
 const tabs = document.querySelectorAll(".operations__tab");
 const tabsContainer = document.querySelector(".operations__tab-container");
 const tabsContent = document.querySelectorAll(".operations__content");
+const nav = document.querySelector(".nav");
 
 const openModal = function (e) {
   e.preventDefault();
@@ -56,7 +57,7 @@ function navScrollTo(e) {
   }
 }
 
-navBar.addEventListener("click", navScrollTo);
+navLinks.addEventListener("click", navScrollTo);
 
 // Tabbed Component
 function changeTab(e) {
@@ -79,6 +80,29 @@ function changeTab(e) {
 // tabs.forEach(tab => tab.addEventListener("click", changeTab);
 tabsContainer.addEventListener("click", changeTab);
 
-// document.querySelectorAll('.nav__link').forEach(function (el)) {
-//   el.addEventListener('click', )
-// }
+// Menu fade animation
+function navAnimation(e) {
+  if (e.target.classList.contains("nav__link")) {
+    const link = e.target;
+    const siblingLinks = link.closest(".nav").querySelectorAll(".nav__link");
+    const logo = link.closest(".nav").querySelector("img");
+
+    siblingLinks.forEach((el) => {
+      if (el !== link) el.style.opacity = this;
+    });
+    logo.style.opacity = this;
+  }
+}
+
+nav.addEventListener("mouseover", navAnimation.bind(0.5));
+nav.addEventListener("mouseout", navAnimation.bind(1));
+
+// Sticky Navigation
+const initialCoords = section1.getBoundingClientRect();
+
+function stickyNavBar() {
+  if (window.scrollY > initialCoords.top) nav.classList.add("sticky");
+  else nav.classList.remove("sticky");
+}
+
+window.addEventListener("scroll", stickyNavBar);
