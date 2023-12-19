@@ -17,7 +17,11 @@ const nav = document.querySelector(".nav");
 const header = document.querySelector(".header");
 const navHeight = nav.getBoundingClientRect().height;
 const allSections = document.querySelectorAll(".section");
-const imgTargets = document.querySelectorAll("img[data-src");
+const imgTargets = document.querySelectorAll("img[data-src]");
+const slides = document.querySelectorAll(".slide");
+const slider = document.querySelector(".slider");
+const btnLeft = document.querySelector(".slider__btn--left");
+const btnRight = document.querySelector(".slider__btn--right");
 
 const openModal = function (e) {
   e.preventDefault();
@@ -140,7 +144,7 @@ const sectionObserver = new IntersectionObserver(revealSection, {
 
 allSections.forEach(function (section) {
   sectionObserver.observe(section);
-  section.classList.add("section--hidden");
+  // section.classList.add("section--hidden");
 });
 
 // Lazy load images
@@ -161,3 +165,37 @@ const imgObserver = new IntersectionObserver(loadImg, {
 });
 
 imgTargets.forEach((img) => imgObserver.observe(img));
+
+// Slider
+slider.style.overflow = "visible";
+let currentSlide = 0;
+const maxSlide = slides.length;
+
+function goToSlide(slide) {
+  slides.forEach(
+    (s, i) => (s.style.transform = `translateX(${100 * (i - slide)}%)`)
+  );
+}
+
+goToSlide(0);
+
+function nextSlide() {
+  if (currentSlide === maxSlide - 1) {
+    currentSlide = 0;
+  } else {
+    currentSlide++;
+  }
+  goToSlide(currentSlide);
+}
+
+function prevSlide() {
+  if (currentSlide === 0) {
+    currentSlide = maxSlide - 1;
+  } else {
+    currentSlide--;
+  }
+  goToSlide(currentSlide);
+}
+
+btnLeft.addEventListener("click", prevSlide);
+btnRight.addEventListener("click", nextSlide);
